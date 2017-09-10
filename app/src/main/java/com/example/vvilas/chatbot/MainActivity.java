@@ -45,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.menu_emprestimo) {
             Intent intent = new Intent(this, EmprestimoActivity.class);
             startActivity(intent);
+        }else if (item.getItemId() == R.id.menu_investimento) {
+            Intent intent = new Intent(this, InvestimentoActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

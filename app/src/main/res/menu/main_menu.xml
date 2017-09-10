@@ -6,5 +6,7 @@
         android:title="Assistente Virtual" />
     <item android:id="@+id/menu_emprestimo"
         android:title="Empréstimo Pessoal" />
+    <item android:id="@+id/menu_investimento"
+        android:title="Investimento" />
 
 </menu>
