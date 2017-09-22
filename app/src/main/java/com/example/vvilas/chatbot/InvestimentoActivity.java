@@ -226,26 +226,26 @@ public class InvestimentoActivity extends Activity {
     public void investimento() {
         Investimento investimento;
         double juros;
+        double ipca = 4.05 / 100;
+        double ganho = 0;
 
         if (seekBarAnos.getProgress() * 365 <= convertDate(1, 0, 2020)) {
-
             investimento = new Investimento();
-            juros = 0.0818;
+            juros = 0.0802;
             juros = (juros * seekBarAnos.getProgress()) + 1;
             investimento.setNome("Tesouro Prefixado 2020 (LTN)");
-            investimento.setJuros("Rendimento: 8.18% a.a.");
+            investimento.setJuros("Rendimento: 8.02% a.a.");
             investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
             investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
             investimentos.add(investimento);
         }
 
         if (seekBarAnos.getProgress() * 365 <= convertDate(1, 2, 2023)) {
-
             investimento = new Investimento();
             juros = 0.0816;
             juros = (juros * seekBarAnos.getProgress()) + 1;
             investimento.setNome("Tesouro Selic 2023 (LFT)");
-            investimento.setJuros("Rendimento: 8.16 a.a.");
+            investimento.setJuros("Rendimento: 8.16% a.a.");
             investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
             investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
             investimentos.add(investimento);
@@ -254,10 +254,10 @@ public class InvestimentoActivity extends Activity {
 
         if (seekBarAnos.getProgress() * 365 <= convertDate(1, 0, 2023)) {
             investimento = new Investimento();
-            juros = 0.0948;
+            juros = 0.0932;
             juros = (juros * seekBarAnos.getProgress()) + 1;
             investimento.setNome("Tesouro Prefixado 2023 (LTN)");
-            investimento.setJuros("Rendimento: 9.48% a.a.");
+            investimento.setJuros("Rendimento: 9.32% a.a.");
             investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
             investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
             investimentos.add(investimento);
@@ -265,33 +265,46 @@ public class InvestimentoActivity extends Activity {
 
         if (seekBarAnos.getProgress() * 365 <= convertDate(15, 7, 2024)) {
             investimento = new Investimento();
-            juros = 0.0474;
-            juros = (juros * seekBarAnos.getProgress()) + 1;
+            juros = 0.0467 + ipca;
+            double valor = seekBarInvestimento.getProgress();
+            ganho = 0;
+
+            for (int i = 0; i < seekBarAnos.getProgress(); i++) {
+                ganho = valor * juros;
+                valor += + ganho;
+            }
+
             investimento.setNome("Tesouro IPCA+ 2024 (NTNB Princ)");
             investimento.setJuros("Rendimento: 4.74% a.a.");
-            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
-            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
+            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", valor));
+            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", valor - seekBarInvestimento.getProgress()));
             investimentos.add(investimento);
         }
 
         if (seekBarAnos.getProgress() * 365 <= convertDate(15, 7, 2026)) {
             investimento = new Investimento();
-            juros = 0.0482;
-            juros = (juros * seekBarAnos.getProgress()) + 1;
+            juros = 0.0479 + ipca;
+            double valor = seekBarInvestimento.getProgress();
+            ganho = 0;
+
+            for (int i = 0; i < seekBarAnos.getProgress(); i++) {
+                ganho = valor * juros;
+                valor += ganho;
+            }
             investimento.setNome("Tesouro IPCA+ com Juros Semestrais 2026 (NTNB)");
-            investimento.setJuros("Rendimento: 4.82% a.a.");
-            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
-            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
+            investimento.setJuros("Rendimento: 4.79% a.a.");
+            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", valor));
+            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", valor - seekBarInvestimento.getProgress()));
             investimentos.add(investimento);
         }
 
 
         if (seekBarAnos.getProgress() * 365 <= convertDate(1, 0, 2027)) {
             investimento = new Investimento();
-            juros = 0.0968;
+            juros = 0.0960;
             juros = (juros * seekBarAnos.getProgress()) + 1;
             investimento.setNome("Tesouro Prefixado com Juros Semestrais 2027 (NTNF)");
-            investimento.setJuros("Rendimento: 9.68% a.a.");
+            investimento.setJuros("Rendimento: 9.60% a.a.");
             investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
             investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
             investimentos.add(investimento);
@@ -299,45 +312,69 @@ public class InvestimentoActivity extends Activity {
 
         if (seekBarAnos.getProgress() * 365 <= convertDate(15, 4, 2035)) {
             investimento = new Investimento();
-            juros = 0.0506;
-            juros = (juros * seekBarAnos.getProgress()) + 1;
+            juros = 0.0506 + ipca;
+            double valor = seekBarInvestimento.getProgress();
+            ganho = 0;
+
+            for (int i = 0; i < seekBarAnos.getProgress(); i++) {
+                ganho = valor * juros;
+                valor += ganho;
+            }
             investimento.setNome("Tesouro IPCA+ 2035 (NTNB Princ)");
             investimento.setJuros("Rendimento: 5.06% a.a.");
-            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
-            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
+            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", valor));
+            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", valor - seekBarInvestimento.getProgress()));
             investimentos.add(investimento);
         }
 
         if (seekBarAnos.getProgress() * 365 <= convertDate(15, 4, 2035)) {
             investimento = new Investimento();
-            juros = 0.0497;
-            juros = (juros * seekBarAnos.getProgress()) + 1;
+            juros = 0.0497 + ipca;
+            double valor = seekBarInvestimento.getProgress();
+            ganho = 0;
+
+            for (int i = 0; i < seekBarAnos.getProgress(); i++) {
+                ganho = valor * juros;
+                valor += ganho;
+            }
             investimento.setNome("Tesouro IPCA+ com Juros Semestrais 2035 (NTNB)");
             investimento.setJuros("Rendimento: 4.97% a.a.");
-            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
-            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
+            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", valor));
+            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", valor - seekBarInvestimento.getProgress()));
             investimentos.add(investimento);
         }
 
         if (seekBarAnos.getProgress() * 365 <= convertDate(15, 4, 2045)) {
             investimento = new Investimento();
-            juros = 0.0506;
-            juros = (juros * seekBarAnos.getProgress()) + 1;
+            juros = 0.0506 + ipca;
+            double valor = seekBarInvestimento.getProgress();
+            ganho = 0;
+
+            for (int i = 0; i < seekBarAnos.getProgress(); i++) {
+                ganho = valor * juros;
+                valor += ganho;
+            }
             investimento.setNome("Tesouro IPCA+ 2045 (NTNB Princ)");
             investimento.setJuros("Rendimento: 5.06% a.a.");
-            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
-            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
+            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", valor));
+            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", valor - seekBarInvestimento.getProgress()));
             investimentos.add(investimento);
         }
 
         if (seekBarAnos.getProgress() * 365 <= convertDate(15, 7, 2050)) {
             investimento = new Investimento();
-            juros = 0.0508;
-            juros = (juros * seekBarAnos.getProgress()) + 1;
+            juros = 0.0508 + ipca;
+            double valor = seekBarInvestimento.getProgress();
+            ganho = 0;
+
+            for (int i = 0; i < seekBarAnos.getProgress(); i++) {
+                ganho = valor * juros;
+                valor += ganho;
+            }
             investimento.setNome("Tesouro IPCA+ com Juros Semestrais 2050 (NTNB)");
             investimento.setJuros("Rendimento: 5.08% a.a.");
-            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
-            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
+            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", valor));
+            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", valor - seekBarInvestimento.getProgress()));
             investimentos.add(investimento);
         }
     }
