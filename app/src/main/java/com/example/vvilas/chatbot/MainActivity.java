@@ -1,10 +1,13 @@
 package com.example.vvilas.chatbot;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,9 +30,23 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 import com.ibm.watson.developer_cloud.text_to_speech.v1.model.Voice;
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.materialdrawer.AccountHeader;
+import com.mikepenz.materialdrawer.AccountHeaderBuilder;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.holder.BadgeStyle;
+import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SectionDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -45,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.menu_emprestimo) {
             Intent intent = new Intent(this, EmprestimoActivity.class);
             startActivity(intent);
-        }else if (item.getItemId() == R.id.menu_investimento) {
+        } else if (item.getItemId() == R.id.menu_investimento) {
             Intent intent = new Intent(this, InvestimentoActivity.class);
             startActivity(intent);
         }
@@ -59,9 +76,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         gif = (ImageView) findViewById(R.id.gif);
         message = (EditText) findViewById(R.id.message);
@@ -71,7 +88,73 @@ public class MainActivity extends AppCompatActivity {
                 .asGif()
                 .into(gif);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
+        AccountHeader headerResult = new AccountHeaderBuilder()
+                .withActivity(this)
+                .withSelectionListEnabledForSingleProfile(false)
+                .withHeaderBackground(R.color.md_orange_A200)
+                .addProfiles(
+                        new ProfileDrawerItem().withName("Usuario").withEmail("user@user.com").withIcon(getResources().getDrawable(R.drawable.bg_bubble_self))
+                )
+                .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
+                    @Override
+                    public boolean onProfileChanged(View view, IProfile profile, boolean currentProfile) {
+                        return false;
+                    }
+                })
+                .build();
+
+        final PrimaryDrawerItem item0 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_comment).withIdentifier(1).withName("Assitente Virtual");
+        SectionDrawerItem titulo1 = new SectionDrawerItem().withName("Calculadoras");
+        final PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_calculator).withIdentifier(2).withName("Tesouro Direto");
+        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_calculator).withIdentifier(3).withName("Empréstimo Pessoal");
+        SectionDrawerItem titulo2 = new SectionDrawerItem().withName("Investimentos");
+        PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIcon(GoogleMaterial.Icon.gmd_trending_up).withIdentifier(4).withName("Tesouro Direto");
+        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIcon(GoogleMaterial.Icon.gmd_trending_up).withIdentifier(5).withName("CDI");
+        PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIcon(GoogleMaterial.Icon.gmd_trending_up).withIdentifier(6).withName("CDB");
+
+        Drawer result = new DrawerBuilder()
+                .withAccountHeader(headerResult)
+                .withActivity(this)
+                .withSelectedItem(-1)
+                .withTranslucentStatusBar(false)
+                .withActionBarDrawerToggle(true)
+                .withActionBarDrawerToggleAnimated(true)
+                .withToolbar(toolbar)
+                .addDrawerItems(
+                        item0,
+                        titulo1,
+                        item1,
+                        item2,
+                        new DividerDrawerItem(),
+                        titulo2,
+                        item3,
+                        item4
+
+
+                ).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        if (drawerItem == item0) {
+                            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                            finish();
+                            startActivity(intent);
+                        }
+                        if (drawerItem == item1) {
+                            Intent intent = new Intent(MainActivity.this, InvestimentoActivity.class);
+                            finish();
+                            startActivity(intent);
+                        }
+                        if (drawerItem == item2) {
+                            Intent intent = new Intent(MainActivity.this, EmprestimoActivity.class);
+                            finish();
+                            startActivity(intent);
+                        }
+                        return true;
+                    }
+                })
+                .build();
     }
 
 

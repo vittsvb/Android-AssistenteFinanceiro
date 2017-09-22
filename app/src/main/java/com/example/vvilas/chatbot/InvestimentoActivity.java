@@ -1,16 +1,33 @@
 package com.example.vvilas.chatbot;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.materialdrawer.AccountHeader;
+import com.mikepenz.materialdrawer.AccountHeaderBuilder;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.SectionDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IProfile;
+
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
-public class InvestimentoActivity extends AppCompatActivity {
+public class InvestimentoActivity extends Activity {
 
     private SeekBar seekBarInvestimento;
     private TextView textViewInvestimento;
@@ -27,6 +44,74 @@ public class InvestimentoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_investimento);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        AccountHeader headerResult = new AccountHeaderBuilder()
+                .withActivity(this)
+                .withSelectionListEnabledForSingleProfile(false)
+                .withHeaderBackground(R.color.md_orange_A200)
+                .addProfiles(
+                        new ProfileDrawerItem().withName("Usuario").withEmail("user@user.com").withIcon(getResources().getDrawable(R.drawable.bg_bubble_self))
+                )
+                .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
+                    @Override
+                    public boolean onProfileChanged(View view, IProfile profile, boolean currentProfile) {
+                        return false;
+                    }
+                })
+                .build();
+
+        final PrimaryDrawerItem item0 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_comment).withIdentifier(1).withName("Assitente Virtual");
+        SectionDrawerItem titulo1 = new SectionDrawerItem().withName("Calculadoras");
+        final PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_calculator).withIdentifier(2).withName("Tesouro Direto");
+        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_calculator).withIdentifier(3).withName("Empréstimo Pessoal");
+        SectionDrawerItem titulo2 = new SectionDrawerItem().withName("Investimentos");
+        PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIcon(GoogleMaterial.Icon.gmd_trending_up).withIdentifier(4).withName("Tesouro Direto");
+        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIcon(GoogleMaterial.Icon.gmd_trending_up).withIdentifier(5).withName("CDI");
+        PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIcon(GoogleMaterial.Icon.gmd_trending_up).withIdentifier(6).withName("CDB");
+
+        Drawer result = new DrawerBuilder()
+                .withAccountHeader(headerResult)
+                .withActivity(this)
+                .withSelectedItem(-1)
+                .withTranslucentStatusBar(false)
+                .withActionBarDrawerToggle(true)
+                .withActionBarDrawerToggleAnimated(true)
+                .withToolbar(toolbar)
+                .addDrawerItems(
+                        item0,
+                        titulo1,
+                        item1,
+                        item2,
+                        new DividerDrawerItem(),
+                        titulo2,
+                        item3,
+                        item4
+
+
+                ).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        if (drawerItem == item0) {
+                            Intent intent = new Intent(InvestimentoActivity.this, MainActivity.class);
+                            finish();
+                            startActivity(intent);
+                        }
+                        if (drawerItem == item1) {
+                            Intent intent = new Intent(InvestimentoActivity.this, InvestimentoActivity.class);
+                            finish();
+                            startActivity(intent);
+                        }
+                        if (drawerItem == item2) {
+                            Intent intent = new Intent(InvestimentoActivity.this, EmprestimoActivity.class);
+                            finish();
+                            startActivity(intent);
+                        }
+                        return true;
+                    }
+                })
+                .build();
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view_investimento);
         recyclerView.setHasFixedSize(true);
@@ -95,7 +180,7 @@ public class InvestimentoActivity extends AppCompatActivity {
                 progress = progressValue;
                 int stepSize = 1;
 
-                int minimo = 2;
+                int minimo = stepSize;
                 if (progress < minimo) {
                     progress = minimo;
                     seekBarAnos.setProgress(progress);
@@ -125,88 +210,135 @@ public class InvestimentoActivity extends AppCompatActivity {
 
     }
 
-    public void investimento() {
+    public long convertDate(int day, int month, int year) {
+        Calendar today = Calendar.getInstance();
 
-        Investimento investimento = new Investimento();
+        Calendar thatDay = Calendar.getInstance();
+        thatDay.set(Calendar.DAY_OF_MONTH, day);
+        thatDay.set(Calendar.MONTH, month); // 0-11 so 1 less
+        thatDay.set(Calendar.YEAR, year);
+
+        long diff = thatDay.getTimeInMillis() - today.getTimeInMillis();
+        long days = diff / (24 * 60 * 60 * 1000);
+        return days;
+    }
+
+    public void investimento() {
+        Investimento investimento;
         double juros;
 
-        juros = 0.06;
-        juros = (juros * seekBarAnos.getProgress()) + 1;
-
-        investimento.setNome("Poupança");
-        investimento.setJuros("Rendimento: 6.0% a.a.");
-        investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
-        investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
-        investimentos.add(investimento);
-
-        if (seekBarAnos.getProgress() <= 2) {
+        if (seekBarAnos.getProgress() * 365 <= convertDate(1, 0, 2020)) {
 
             investimento = new Investimento();
-            juros = 0.0832;
+            juros = 0.0818;
             juros = (juros * seekBarAnos.getProgress()) + 1;
             investimento.setNome("Tesouro Prefixado 2020 (LTN)");
-            investimento.setJuros("Rendimento: 8.32% a.a.");
+            investimento.setJuros("Rendimento: 8.18% a.a.");
             investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
             investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
             investimentos.add(investimento);
         }
 
-        if (seekBarAnos.getProgress() <= 5) {
+        if (seekBarAnos.getProgress() * 365 <= convertDate(1, 2, 2023)) {
 
             investimento = new Investimento();
-            juros = 0.0815;
+            juros = 0.0816;
             juros = (juros * seekBarAnos.getProgress()) + 1;
             investimento.setNome("Tesouro Selic 2023 (LFT)");
-            investimento.setJuros("Rendimento: Indexado à Selic (~ 8.15 a.a.)");
+            investimento.setJuros("Rendimento: 8.16 a.a.");
             investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
             investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
             investimentos.add(investimento);
         }
 
 
-        if (seekBarAnos.getProgress() <= 5) {
+        if (seekBarAnos.getProgress() * 365 <= convertDate(1, 0, 2023)) {
             investimento = new Investimento();
-            juros = 0.0954;
+            juros = 0.0948;
             juros = (juros * seekBarAnos.getProgress()) + 1;
             investimento.setNome("Tesouro Prefixado 2023 (LTN)");
-            investimento.setJuros("Rendimento: 9.54% a.a.");
+            investimento.setJuros("Rendimento: 9.48% a.a.");
             investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
             investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
             investimentos.add(investimento);
         }
 
-        if (seekBarAnos.getProgress() == 3) {
+        if (seekBarAnos.getProgress() * 365 <= convertDate(15, 7, 2024)) {
             investimento = new Investimento();
-            juros = 0.0469;
+            juros = 0.0474;
             juros = (juros * seekBarAnos.getProgress()) + 1;
             investimento.setNome("Tesouro IPCA+ 2024 (NTNB Princ)");
-            investimento.setJuros("Rendimento: 4.69% a.a.");
+            investimento.setJuros("Rendimento: 4.74% a.a.");
             investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
             investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
             investimentos.add(investimento);
         }
 
-        if (seekBarAnos.getProgress() <= 10 && seekBarAnos.getProgress() >= 4) {
+        if (seekBarAnos.getProgress() * 365 <= convertDate(15, 7, 2026)) {
             investimento = new Investimento();
-            juros = 0.0501;
+            juros = 0.0482;
+            juros = (juros * seekBarAnos.getProgress()) + 1;
+            investimento.setNome("Tesouro IPCA+ com Juros Semestrais 2026 (NTNB)");
+            investimento.setJuros("Rendimento: 4.82% a.a.");
+            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
+            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
+            investimentos.add(investimento);
+        }
+
+
+        if (seekBarAnos.getProgress() * 365 <= convertDate(1, 0, 2027)) {
+            investimento = new Investimento();
+            juros = 0.0968;
+            juros = (juros * seekBarAnos.getProgress()) + 1;
+            investimento.setNome("Tesouro Prefixado com Juros Semestrais 2027 (NTNF)");
+            investimento.setJuros("Rendimento: 9.68% a.a.");
+            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
+            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
+            investimentos.add(investimento);
+        }
+
+        if (seekBarAnos.getProgress() * 365 <= convertDate(15, 4, 2035)) {
+            investimento = new Investimento();
+            juros = 0.0506;
             juros = (juros * seekBarAnos.getProgress()) + 1;
             investimento.setNome("Tesouro IPCA+ 2035 (NTNB Princ)");
-            investimento.setJuros("Rendimento: 5.01% a.a.");
+            investimento.setJuros("Rendimento: 5.06% a.a.");
             investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
             investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
             investimentos.add(investimento);
         }
 
-        if (seekBarAnos.getProgress() <= 10 && seekBarAnos.getProgress() >= 6) {
+        if (seekBarAnos.getProgress() * 365 <= convertDate(15, 4, 2035)) {
             investimento = new Investimento();
-            juros = 0.0501;
+            juros = 0.0497;
+            juros = (juros * seekBarAnos.getProgress()) + 1;
+            investimento.setNome("Tesouro IPCA+ com Juros Semestrais 2035 (NTNB)");
+            investimento.setJuros("Rendimento: 4.97% a.a.");
+            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
+            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
+            investimentos.add(investimento);
+        }
+
+        if (seekBarAnos.getProgress() * 365 <= convertDate(15, 4, 2045)) {
+            investimento = new Investimento();
+            juros = 0.0506;
             juros = (juros * seekBarAnos.getProgress()) + 1;
             investimento.setNome("Tesouro IPCA+ 2045 (NTNB Princ)");
-            investimento.setJuros("Rendimento: 5.01% a.a.");
+            investimento.setJuros("Rendimento: 5.06% a.a.");
             investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
             investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
             investimentos.add(investimento);
         }
 
+        if (seekBarAnos.getProgress() * 365 <= convertDate(15, 7, 2050)) {
+            investimento = new Investimento();
+            juros = 0.0508;
+            juros = (juros * seekBarAnos.getProgress()) + 1;
+            investimento.setNome("Tesouro IPCA+ com Juros Semestrais 2050 (NTNB)");
+            investimento.setJuros("Rendimento: 5.08% a.a.");
+            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
+            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
+            investimentos.add(investimento);
+        }
     }
 }
