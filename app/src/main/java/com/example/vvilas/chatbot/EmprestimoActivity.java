@@ -220,38 +220,78 @@ public class EmprestimoActivity extends Activity {
     }
 
     public void emprestimo() {
-        Emprestimo emprestimo = new Emprestimo();
+        Emprestimo emprestimo;
         double valor = seekBarValor.getProgress();
         int parcelas = seekBarParcelas.getProgress();
 
-        double juros = 0.028;
-        double valorMes = valor / ((1 - Math.pow((1 + juros), -parcelas)) / juros);
-        double valorTotal = valorMes * parcelas;
+        double juros;
+        double valorMes;
+        double valorTotal;
 
-        emprestimo.setNome("just");
-        emprestimo.setJuros("Juros: 2.8% mês");
-        emprestimo.setValorMes("R$ " + String.format("%.2f", valorMes) + "/mês");
-        emprestimo.setTotal("Total a pagar: R$ " + String.format("%.2f", valorTotal));
-        emprestimos.add(emprestimo);
+        if (valor >= 1000 && valor <= 35000 && parcelas <= 24) {
+            emprestimo = new Emprestimo();
+            juros = 0.028;
+            valorMes = valor / ((1 - Math.pow((1 + juros), -parcelas)) / juros);
+            valorTotal = valorMes * parcelas;
 
-//        CardView card_viewJust = (CardView) findViewById(R.id.card_viewJust);
-//
-//        if (seekBarValor.getProgress() < 1000 || seekBarValor.getProgress() > 35000 || seekBarParcelas.getProgress() > 24) {
-//            card_viewJust.setVisibility(View.GONE);
-//        } else {
-//            card_viewJust.setVisibility(View.VISIBLE);
-//        }
-//
-//        double juros = 0.028;
-//        TextView totalJust;
-//        TextView valorMesJust;
-//        totalJust = (TextView) findViewById(R.id.totalJust);
-//        valorMesJust = (TextView) findViewById(R.id.valorMesJust);
-//        juros = (juros * seekBarParcelas.getProgress()) + 1;
-//
-//        valorMesJust.setText("R$ " + String.format("%.2f", (seekBarValor.getProgress() * juros) / seekBarParcelas.getProgress()) + "/mês");
-//
-//        totalJust.setText("Total a pagar: R$ " + String.format("%.2f", seekBarValor.getProgress() * juros));
+            emprestimo.setNome("just");
+            emprestimo.setJuros("Juros: 2.8% mês");
+            emprestimo.setValorMes("R$ " + String.format("%.2f", valorMes) + "/mês");
+            emprestimo.setTotal("Total a pagar: R$ " + String.format("%.2f", valorTotal));
+            emprestimos.add(emprestimo);
+        }
+
+        if (valor >= 2500 && valor <= 50000 && parcelas <= 36) {
+            emprestimo = new Emprestimo();
+            juros = 0.024;
+            valorMes = valor / ((1 - Math.pow((1 + juros), -parcelas)) / juros);
+            valorTotal = valorMes * parcelas;
+
+            emprestimo.setNome("lendico");
+            emprestimo.setJuros("Juros: 2.4% mês");
+            emprestimo.setValorMes("R$ " + String.format("%.2f", valorMes) + "/mês");
+            emprestimo.setTotal("Total a pagar: R$ " + String.format("%.2f", valorTotal));
+            emprestimos.add(emprestimo);
+        }
+
+        if (valor >= 2000 && valor <= 35000 && parcelas <= 36) {
+            emprestimo = new Emprestimo();
+            juros = 0.020;
+            valorMes = valor / ((1 - Math.pow((1 + juros), -parcelas)) / juros);
+            valorTotal = valorMes * parcelas;
+
+            emprestimo.setNome("bompracredito");
+            emprestimo.setJuros("Juros: 2.0% mês");
+            emprestimo.setValorMes("R$ " + String.format("%.2f", valorMes) + "/mês");
+            emprestimo.setTotal("Total a pagar: R$ " + String.format("%.2f", valorTotal));
+            emprestimos.add(emprestimo);
+        }
+
+        if (valor <= 3500 && parcelas <= 12) {
+            emprestimo = new Emprestimo();
+            juros = 0.158;
+            valorMes = valor / ((1 - Math.pow((1 + juros), -parcelas)) / juros);
+            valorTotal = valorMes * parcelas;
+
+            emprestimo.setNome("Simplic");
+            emprestimo.setJuros("Juros: 15.8% mês");
+            emprestimo.setValorMes("R$ " + String.format("%.2f", valorMes) + "/mês");
+            emprestimo.setTotal("Total a pagar: R$ " + String.format("%.2f", valorTotal));
+            emprestimos.add(emprestimo);
+        }
+
+        if (valor >= 2000 && valor <= 50000 && parcelas <= 36) {
+            emprestimo = new Emprestimo();
+            juros = 0.023;
+            valorMes = valor / ((1 - Math.pow((1 + juros), -parcelas)) / juros);
+            valorTotal = valorMes * parcelas;
+
+            emprestimo.setNome("Geru");
+            emprestimo.setJuros("Juros: 2.3% mês");
+            emprestimo.setValorMes("R$ " + String.format("%.2f", valorMes) + "/mês");
+            emprestimo.setTotal("Total a pagar: R$ " + String.format("%.2f", valorTotal));
+            emprestimos.add(emprestimo);
+        }
 
 
     }
@@ -277,28 +317,7 @@ public class EmprestimoActivity extends Activity {
 //        dialog.show();
 //    }
 //
-//    public void emprestimoLendico() {
-//        CardView card_viewLendico = (CardView) findViewById(R.id.card_viewLendico);
-//
-//        if (seekBarValor.getProgress() < 2500 || seekBarValor.getProgress() > 50000 || seekBarParcelas.getProgress() > 36) {
-//            card_viewLendico.setVisibility(View.GONE);
-//        } else {
-//            card_viewLendico.setVisibility(View.VISIBLE);
-//        }
-//
-//        double juros = 0.024;
-//        TextView totalLendico;
-//        TextView valorMesLendico;
-//        totalLendico = (TextView) findViewById(R.id.totalLendico);
-//        valorMesLendico = (TextView) findViewById(R.id.valorMesLendico);
-//        juros = (juros * seekBarParcelas.getProgress()) + 1;
-//
-//        valorMesLendico.setText("R$ " + String.format("%.2f", (seekBarValor.getProgress() * juros) / seekBarParcelas.getProgress()) + "/mês");
-//
-//        totalLendico.setText("Total a pagar: R$ " + String.format("%.2f", seekBarValor.getProgress() * juros));
-//
-//
-//    }
+
 //
 //    public void infoLendico(View view) {
 //        dialog = new Dialog(this);
@@ -317,28 +336,7 @@ public class EmprestimoActivity extends Activity {
 //        dialog.show();
 //    }
 //
-//    public void emprestimoBC() {
-//        CardView card_viewBC = (CardView) findViewById(R.id.card_viewBC);
-//
-//        if (seekBarValor.getProgress() < 2000 || seekBarValor.getProgress() > 35000 || seekBarParcelas.getProgress() > 36) {
-//            card_viewBC.setVisibility(View.GONE);
-//        } else {
-//            card_viewBC.setVisibility(View.VISIBLE);
-//        }
-//
-//        double juros = 0.02;
-//        TextView totalBC;
-//        TextView valorMesBC;
-//        totalBC = (TextView) findViewById(R.id.totalBC);
-//        valorMesBC = (TextView) findViewById(R.id.valorMesBC);
-//        juros = (juros * seekBarParcelas.getProgress()) + 1;
-//
-//        valorMesBC.setText("R$ " + String.format("%.2f", (seekBarValor.getProgress() * juros) / seekBarParcelas.getProgress()) + "/mês");
-//
-//        totalBC.setText("Total a pagar: R$ " + String.format("%.2f", seekBarValor.getProgress() * juros));
-//
-//
-//    }
+
 //
 //    public void infoBC(View view) {
 //        dialog = new Dialog(this);
@@ -357,27 +355,7 @@ public class EmprestimoActivity extends Activity {
 //        dialog.show();
 //    }
 //
-//    public void emprestimoSimplic() {
-//        CardView card_viewSimplic = (CardView) findViewById(R.id.card_viewSimplic);
-//
-//        if (seekBarValor.getProgress() > 3500 || seekBarParcelas.getProgress() > 12) {
-//            card_viewSimplic.setVisibility(View.GONE);
-//        } else {
-//            card_viewSimplic.setVisibility(View.VISIBLE);
-//        }
-//
-//        double juros = 0.158;
-//        TextView totalSimplic;
-//        TextView valorMesSimplic;
-//        totalSimplic = (TextView) findViewById(R.id.totalSimplic);
-//        valorMesSimplic = (TextView) findViewById(R.id.valorMesSimplic);
-//        juros = (juros * seekBarParcelas.getProgress()) + 1;
-//
-//        valorMesSimplic.setText("R$ " + String.format("%.2f", (seekBarValor.getProgress() * juros) / seekBarParcelas.getProgress()) + "/mês");
-//
-//        totalSimplic.setText("Total a pagar: R$ " + String.format("%.2f", seekBarValor.getProgress() * juros));
-//
-//    }
+
 //
 //    public void infoSimplic(View view) {
 //        dialog = new Dialog(this);
@@ -402,27 +380,6 @@ public class EmprestimoActivity extends Activity {
 //        dialog.show();
 //    }
 //
-//    public void emprestimoGeru() {
-//        CardView card_viewGeru = (CardView) findViewById(R.id.card_viewGeru);
-//
-//        if (seekBarValor.getProgress() < 5000 || seekBarParcelas.getProgress() > 36) {
-//            card_viewGeru.setVisibility(View.GONE);
-//        } else {
-//            card_viewGeru.setVisibility(View.VISIBLE);
-//        }
-//
-//        double juros = 0.023;
-//        TextView totalGeru;
-//        TextView valorMesGeru;
-//        totalGeru = (TextView) findViewById(R.id.totalGeru);
-//        valorMesGeru = (TextView) findViewById(R.id.valorMesGeru);
-//        juros = (juros * seekBarParcelas.getProgress()) + 1;
-//
-//        valorMesGeru.setText("R$ " + String.format("%.2f", (seekBarValor.getProgress() * juros) / seekBarParcelas.getProgress()) + "/mês");
-//
-//        totalGeru.setText("Total a pagar: R$ " + String.format("%.2f", seekBarValor.getProgress() * juros));
-//
-//    }
 //
 //    public void infoGeru(View view) {
 //        dialog = new Dialog(this);

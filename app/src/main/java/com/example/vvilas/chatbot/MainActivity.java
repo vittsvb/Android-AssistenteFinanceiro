@@ -48,27 +48,6 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 public class MainActivity extends Activity {
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.menu_assistente) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        } else if (item.getItemId() == R.id.menu_emprestimo) {
-            Intent intent = new Intent(this, EmprestimoActivity.class);
-            startActivity(intent);
-        } else if (item.getItemId() == R.id.menu_investimento) {
-            Intent intent = new Intent(this, InvestimentoActivity.class);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     public ImageView gif;
     public EditText message;
 
@@ -137,7 +116,7 @@ public class MainActivity extends Activity {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         if (drawerItem == item0) {
-                            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                            Intent intent = new Intent(MainActivity.this, QuizActivity.class);
                             finish();
                             startActivity(intent);
                         }

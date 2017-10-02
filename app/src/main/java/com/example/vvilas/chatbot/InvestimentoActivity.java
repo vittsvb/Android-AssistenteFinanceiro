@@ -249,8 +249,8 @@ public class InvestimentoActivity extends Activity {
             }
             investimento.setNome("Tesouro Prefixado 2020 (LTN)");
             investimento.setJuros("Rendimento: 8.02% a.a.");
-            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
-            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
+            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", valor));
+            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", valor - seekBarInvestimento.getProgress()));
             investimentos.add(investimento);
         }
 
@@ -265,8 +265,8 @@ public class InvestimentoActivity extends Activity {
             }
             investimento.setNome("Tesouro Selic 2023 (LFT)");
             investimento.setJuros("Rendimento: 0.01% a.a.");
-            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
-            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
+            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", valor));
+            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", valor - seekBarInvestimento.getProgress()));
             investimentos.add(investimento);
         }
 
@@ -283,8 +283,8 @@ public class InvestimentoActivity extends Activity {
 
             investimento.setNome("Tesouro Prefixado 2023 (LTN)");
             investimento.setJuros("Rendimento: 9.32% a.a.");
-            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", juros * seekBarInvestimento.getProgress()));
-            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", (juros - 1) * seekBarInvestimento.getProgress()));
+            investimento.setTotal("Total Resgatado: R$ " + String.format("%.2f", valor));
+            investimento.setGanho("Ganho de + R$ " + String.format("%.2f", valor - seekBarInvestimento.getProgress()));
             investimentos.add(investimento);
         }
 

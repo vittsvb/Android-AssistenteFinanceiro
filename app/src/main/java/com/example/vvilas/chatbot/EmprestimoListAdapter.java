@@ -39,6 +39,14 @@ public class EmprestimoListAdapter extends RecyclerView.Adapter<EmprestimoListAd
 
         if (nome.equalsIgnoreCase("just")) {
             holder.imageView.setImageResource(R.mipmap.just_online);
+        }else if (nome.equalsIgnoreCase("lendico")){
+            holder.imageView.setImageResource(R.mipmap.lendico_logo);
+        }else if (nome.equalsIgnoreCase("bompracredito")){
+            holder.imageView.setImageResource(R.mipmap.bompracredito);
+        }else if (nome.equalsIgnoreCase("Simplic")){
+            holder.imageView.setImageResource(R.mipmap.simplic_logo);
+        }else if (nome.equalsIgnoreCase("geru")){
+            holder.imageView.setImageResource(R.mipmap.geru);
         }
 
     }
