@@ -1,5 +1,6 @@
 package com.example.vvilas.chatbot;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -26,20 +27,23 @@ public class Pergunta1Fragment extends Fragment implements View.OnClickListener 
     }
 
     private void initView(View view) {
-        Button btnClick = view.findViewById(R.id.button);
-        btnClick.setOnClickListener(this);
+        Button resposta1 = view.findViewById(R.id.resposta1);
+        Button resposta2 = view.findViewById(R.id.resposta2);
+        resposta1.setOnClickListener(this);
+        resposta2.setOnClickListener(this);
 
-    }
-
-    private void chanceFragment() {
-        getFragmentManager().beginTransaction().replace(R.id.main, new Pergunta2Fragment()).addToBackStack(null).commit();
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.button:
-                chanceFragment();
+            case R.id.resposta1:
+                getFragmentManager().beginTransaction().replace(R.id.main, new Pergunta2Fragment()).addToBackStack(null).commit();
+                break;
+            case R.id.resposta2:
+                Intent intent = new Intent(getActivity(), InvestimentoActivity.class);
+                getActivity().finish();
+                startActivity(intent);
                 break;
         }
     }

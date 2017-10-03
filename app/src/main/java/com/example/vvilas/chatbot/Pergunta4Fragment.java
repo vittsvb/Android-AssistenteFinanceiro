@@ -1,6 +1,5 @@
 package com.example.vvilas.chatbot;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,15 +9,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 /**
- * Created by vvilas on 28/09/2017.
+ * Created by vvilas on 02/10/2017.
  */
 
-public class Pergunta2Fragment extends Fragment implements View.OnClickListener {
+public class Pergunta4Fragment extends Fragment implements View.OnClickListener {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_pergunta2, container, false);
+        return inflater.inflate(R.layout.fragment_pergunta4, container, false);
     }
 
     @Override
@@ -30,23 +29,18 @@ public class Pergunta2Fragment extends Fragment implements View.OnClickListener 
     private void initView(View view) {
         Button resposta1 = view.findViewById(R.id.resposta1);
         Button resposta2 = view.findViewById(R.id.resposta2);
-        Button resposta3 = view.findViewById(R.id.resposta3);
         resposta1.setOnClickListener(this);
         resposta2.setOnClickListener(this);
-        resposta3.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.resposta1:
-                getFragmentManager().beginTransaction().replace(R.id.main, new Resposta1Fragment()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.main, new Resposta2Fragment()).addToBackStack(null).commit();
                 break;
             case R.id.resposta2:
-                getFragmentManager().beginTransaction().replace(R.id.main, new Pergunta3Fragment()).addToBackStack(null).commit();
-                break;
-            case R.id.resposta3:
-                getFragmentManager().beginTransaction().replace(R.id.main, new Pergunta3Fragment()).addToBackStack(null).commit();
+//                getFragmentManager().beginTransaction().replace(R.id.main, new Resposta3Fragment()).addToBackStack(null).commit();
                 break;
         }
 

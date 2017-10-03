@@ -66,14 +66,11 @@ public class EmprestimoActivity extends Activity {
                 })
                 .build();
 
-        final PrimaryDrawerItem item0 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_comment).withIdentifier(1).withName("Assitente Virtual");
+        final PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_comment).withIdentifier(1).withName("Assitente Virtual");
+        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_comment).withIdentifier(1).withName("Quiz");
         SectionDrawerItem titulo1 = new SectionDrawerItem().withName("Calculadoras");
-        final PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_calculator).withIdentifier(2).withName("Tesouro Direto");
-        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_calculator).withIdentifier(3).withName("Empréstimo Pessoal");
-        SectionDrawerItem titulo2 = new SectionDrawerItem().withName("Investimentos");
-        PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIcon(GoogleMaterial.Icon.gmd_trending_up).withIdentifier(4).withName("Tesouro Direto");
-        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIcon(GoogleMaterial.Icon.gmd_trending_up).withIdentifier(5).withName("CDI");
-        PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIcon(GoogleMaterial.Icon.gmd_trending_up).withIdentifier(6).withName("CDB");
+        final PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_calculator).withIdentifier(2).withName("Tesouro Direto");
+        final PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_calculator).withIdentifier(3).withName("Empréstimo Pessoal");
 
         Drawer result = new DrawerBuilder()
                 .withAccountHeader(headerResult)
@@ -84,12 +81,9 @@ public class EmprestimoActivity extends Activity {
                 .withActionBarDrawerToggleAnimated(true)
                 .withToolbar(toolbar)
                 .addDrawerItems(
-                        item0,
-                        titulo1,
                         item1,
                         item2,
-                        new DividerDrawerItem(),
-                        titulo2,
+                        titulo1,
                         item3,
                         item4
 
@@ -97,17 +91,22 @@ public class EmprestimoActivity extends Activity {
                 ).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        if (drawerItem == item0) {
+                        if (drawerItem == item1) {
                             Intent intent = new Intent(EmprestimoActivity.this, MainActivity.class);
                             finish();
                             startActivity(intent);
                         }
-                        if (drawerItem == item1) {
+                        if (drawerItem == item2) {
+                            Intent intent = new Intent(EmprestimoActivity.this, QuizActivity.class);
+                            finish();
+                            startActivity(intent);
+                        }
+                        if (drawerItem == item3) {
                             Intent intent = new Intent(EmprestimoActivity.this, InvestimentoActivity.class);
                             finish();
                             startActivity(intent);
                         }
-                        if (drawerItem == item2) {
+                        if (drawerItem == item4) {
                             Intent intent = new Intent(EmprestimoActivity.this, EmprestimoActivity.class);
                             finish();
                             startActivity(intent);
