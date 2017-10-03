@@ -40,7 +40,7 @@ public class Pergunta3Fragment extends Fragment implements View.OnClickListener{
                 getFragmentManager().beginTransaction().replace(R.id.main, new Resposta2Fragment()).addToBackStack(null).commit();
                 break;
             case R.id.resposta2:
-                getFragmentManager().beginTransaction().replace(R.id.main, new Pergunta4Fragment()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.main, new Resposta3Fragment()).addToBackStack(null).commit();
                 break;
         }
 

@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="15dp"
-                android:text="Suas escolhas foram: médio prazo > prefixado:\nO título mais indicado para você é:"
+                android:text="Suas escolhas foram: médio prazo > pós-fixado:\nO título mais indicado para você é:"
                 android:textSize="18dp" />
 
             <android.support.v7.widget.CardView
@@ -68,7 +68,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="Tesouro Prefixado 2020 (LTN)"
+                        android:text="Tesouro IPCA+ 2024 (NTN-B Principal)"
                         android:textColor="#003069"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -77,13 +77,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="Vencimento: 01/01/2020" />
+                        android:text="Vencimento: 15/08/2024" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="Indicado para aqueles que querem investir por médio prazo. É um título prefixado, ou seja, no momento da compra você já sabe exatamente o quanto irá receber no futuro. É mais interessante para quem pode deixar o seu dinheiro render até o vencimento do investimento, pois não paga juros semestrais." />
+                        android:text="Indicado para aqueles que querem investir por médio ou longo prazo. São títulos pós-fixados, uma vez que parte de seus rendimentos acompanha a variação da taxa de inflação (IPCA). Eles aumentam o poder de compra do seu dinheiro, pois seus retornos são compostos por uma taxa de juros predefinida + variação da inflação (IPCA). São mais interessantes para quem pode deixar o dinheiro render até o vencimento do investimento, pois não pagam juros semestrais." />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -119,11 +119,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="Indicado para aqueles que querem investir por médio ou longo prazo. É um título prefixado, ou seja, no momento da compra você já sabe exatamente o quanto irá receber no futuro. É mais interessante para quem pode deixar o seu dinheiro render até o vencimento do investimento, pois não paga juros semestrais." />
-
+                        android:text="Indicado para aqueles que querem investir por curto ou médio prazo. É um título pós-fixado, uma vez que seu rendimento acompanha as variações da taxa de juros da economia (SELIC). Esse investimento garante que, mesmo em caso de resgate antecipado, o montante do dinheiro resgatado será superior ao inicialmente investido.  Como não paga juros semestrais, é mais interessante para quem pode deixar o dinheiro render até o vencimento do investimento." />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

@@ -33,7 +33,7 @@
             android:layout_marginRight="5dp"
             android:layout_marginTop="15dp"
             android:gravity="center"
-            android:text="O que mais importa para você?"
+            android:text="Como deseja receber a remuneração do seu investimento?"
             android:textColor="#007216"
             android:textSize="22dp"
             android:textStyle="bold" />
@@ -49,7 +49,7 @@
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:paddingTop="8dp"
-            android:text="\nSaber exatamente quanto vou ganhar"
+            android:text="\nDe uma vez só, ao final do período de investimento"
             android:textColor="#fff" />
 
         <Button
@@ -62,10 +62,8 @@
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:paddingTop="8dp"
-            android:text="\nPreservar meu poder de compra"
+            android:text="\nSemestralmente"
             android:textColor="#fff" />
 
     </LinearLayout>
-
-
 </LinearLayout>
