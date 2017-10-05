@@ -4,22 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.vvilas.chatbot.MainActivity"
+    android:background="@drawable/mountains"
     android:orientation="vertical"
-    android:background="@drawable/mountains">
+    tools:context="com.example.vvilas.chatbot.MainActivity">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        android:id="@+id/appBarLayout">
+        android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay"/>
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -27,70 +27,54 @@
         android:id="@+id/gif"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/dots_speak"
-        android:minHeight="250dp"
-        android:contentDescription=""
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/appBarLayout"
-        android:layout_alignParentStart="true" />
-
-    <!--<TextView-->
-        <!--android:id="@+id/watsonRes"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Olá como posso te ajudar?"-->
-        <!--android:textSize="25dp"-->
-        <!--android:gravity="center"-->
-        <!--android:layout_below="@+id/gif"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:fontFamily="sans-serif"/>-->
+        android:contentDescription=""
+        android:minHeight="250dp"
+        app:srcCompat="@mipmap/dots_speak" />
 
     <com.example.vvilas.chatbot.Typewriter
         android:id="@+id/typewriter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Olá, meu nome é Isabela, sou sua assitente financeira, como posso te ajudar?"
-        android:textSize="24sp"
-        android:gravity="center"
-        android:layout_below="@+id/gif"
-        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:fontFamily="sans-serif"
-        android:textColor="@android:color/white"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/gif"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"/>
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="Olá, meu nome é Isabela, sou sua assitente financeira, como posso te ajudar?"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@android:color/white"
-        android:orientation="horizontal"
-        android:id="@+id/linearLayout">
+        android:orientation="horizontal">
 
-        <!--<android.support.v7.widget.AppCompatImageButton-->
-            <!--android:id="@+id/btn_record"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_marginBottom="10dp"-->
-            <!--android:background="@null"-->
-            <!--android:elevation="0dp"-->
-            <!--android:paddingLeft="10dp"-->
-            <!--android:scaleType="fitCenter"-->
-            <!--android:src="@mipmap/ic_mic"-->
-            <!--android:onClick="audioMessage"/>-->
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/btn_record"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:elevation="0dp"
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_mic" />
 
         <EditText
             android:id="@+id/message"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"
             android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_weight="3"
             android:background="@null"
             android:hint="@string/digite_a_sua_pergunta"
             android:lines="1" />
@@ -101,10 +85,10 @@
             android:layout_height="match_parent"
             android:background="@null"
             android:elevation="0dp"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_send"
             android:onClick="enviarMsg"
-            android:padding="5dp"/>
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_send" />
     </LinearLayout>
 
 </RelativeLayout>
