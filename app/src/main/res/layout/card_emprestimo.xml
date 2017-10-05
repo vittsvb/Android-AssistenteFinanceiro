@@ -35,13 +35,15 @@
                 android:id="@+id/juros"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp" />
+                android:layout_margin="5dp"
+                android:textColor="#757575" />
 
             <TextView
                 android:id="@+id/valorMes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp" />
+                android:layout_margin="5dp"
+                android:textColor="#757575" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -51,7 +53,9 @@
                     android:id="@+id/total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp" />
+                    android:layout_margin="5dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
         </LinearLayout>
