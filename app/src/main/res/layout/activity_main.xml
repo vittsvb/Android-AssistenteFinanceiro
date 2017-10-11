@@ -44,7 +44,7 @@
         android:layout_marginRight="10dp"
         android:fontFamily="sans-serif"
         android:gravity="center"
-        android:text="Olá, meu nome é Isabela, sou sua assitente financeira, como posso te ajudar?"
+        android:text="Olá, meu nome é Isabela, sou sua assistente financeira, como posso te ajudar?"
         android:textColor="@android:color/white"
         android:textSize="24sp" />
 
@@ -56,23 +56,13 @@
         android:background="@android:color/white"
         android:orientation="horizontal">
 
-        <android.support.v7.widget.AppCompatImageButton
-            android:id="@+id/btn_record"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@null"
-            android:elevation="0dp"
-            android:padding="5dp"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_mic" />
-
         <EditText
             android:id="@+id/message"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:layout_marginTop="5dp"
             android:layout_weight="3"
             android:background="@null"

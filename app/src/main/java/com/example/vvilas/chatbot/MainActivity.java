@@ -2,14 +2,10 @@ package com.example.vvilas.chatbot;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.CountDownTimer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -31,16 +27,12 @@ import javax.net.ssl.HttpsURLConnection;
 
 import com.ibm.watson.developer_cloud.text_to_speech.v1.model.Voice;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.holder.BadgeStyle;
-import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
-import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
@@ -72,9 +64,9 @@ public class MainActivity extends Activity {
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withSelectionListEnabledForSingleProfile(false)
-                .withHeaderBackground(R.color.md_orange_A200)
+                .withHeaderBackground(R.color.colorAccent)
                 .addProfiles(
-                        new ProfileDrawerItem().withName("Usuario").withEmail("user@user.com").withIcon(getResources().getDrawable(R.drawable.bg_bubble_self))
+                        new ProfileDrawerItem().withName("Vitor Vilas Boas").withEmail("vvilas@gmail.com").withIcon(getResources().getDrawable(R.drawable.user))
                 )
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
@@ -84,9 +76,10 @@ public class MainActivity extends Activity {
                 })
                 .build();
 
+        SectionDrawerItem titulo1 = new SectionDrawerItem().withName("Assistentes");
         final PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_comment).withIdentifier(1).withName("Assitente Virtual");
-        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_comment).withIdentifier(1).withName("Quiz");
-        SectionDrawerItem titulo1 = new SectionDrawerItem().withName("Calculadoras");
+        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_comment).withIdentifier(1).withName("Análise Perfil do Investidor");
+        SectionDrawerItem titulo2 = new SectionDrawerItem().withName("Simuladores");
         final PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_calculator).withIdentifier(2).withName("Tesouro Direto");
         final PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_calculator).withIdentifier(3).withName("Empréstimo Pessoal");
 
@@ -99,9 +92,10 @@ public class MainActivity extends Activity {
                 .withActionBarDrawerToggleAnimated(true)
                 .withToolbar(toolbar)
                 .addDrawerItems(
+                        titulo1,
                         item1,
                         item2,
-                        titulo1,
+                        titulo2,
                         item3,
                         item4
 
@@ -111,22 +105,18 @@ public class MainActivity extends Activity {
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         if (drawerItem == item1) {
                             Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                            finish();
                             startActivity(intent);
                         }
                         if (drawerItem == item2) {
                             Intent intent = new Intent(MainActivity.this, QuizActivity.class);
-                            finish();
                             startActivity(intent);
                         }
                         if (drawerItem == item3) {
                             Intent intent = new Intent(MainActivity.this, InvestimentoActivity.class);
-                            finish();
                             startActivity(intent);
                         }
                         if (drawerItem == item4) {
                             Intent intent = new Intent(MainActivity.this, EmprestimoActivity.class);
-                            finish();
                             startActivity(intent);
                         }
                         return true;

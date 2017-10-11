@@ -34,7 +34,7 @@
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:text="Vamos Começar?"
-            android:textColor="#007216"
+            android:textColor="@color/colorAccentDark"
             android:textSize="22dp"
             android:textStyle="bold" />
 
@@ -43,6 +43,7 @@
             android:layout_height="match_parent"
             android:layout_margin="15dp"
             android:text="Este quiz irá ajudá-lo a dar os primeiros passos. Você descobrirá o título mais adequado ao seu perfil"
+            android:textColor="@color/primary_text"
             android:textSize="18dp" />
 
 
@@ -51,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="#003069"
+            android:background="@color/colorPrimary"
             android:drawableTop="@drawable/qualtitulo"
             android:padding="5dp"
             android:text="\nAinda não sei que título escolher\n"
@@ -62,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="#003069"
+            android:background="@color/colorPrimary"
             android:drawableTop="@drawable/simular"
             android:padding="5dp"
             android:text="\nSimular, descubra quanto sua aplicação pode render"
