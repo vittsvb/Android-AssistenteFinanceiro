@@ -17,7 +17,16 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Empréstimo Pessoal"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+
+        </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
@@ -27,8 +36,9 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:text="Quanto você precisa?"
-        android:textColor="#212121"
-        android:textSize="14sp" />
+        android:textColor="@color/primary_text"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewValor"
@@ -36,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
-        android:textColor="#003069"
+        android:textColor="@color/colorPrimary"
         android:textSize="20sp" />
 
     <SeekBar
@@ -46,8 +56,8 @@
         android:layout_margin="5dp"
         android:max="50000"
         android:progress="10000"
-        android:progressTint="#388E3C"
-        android:thumbTint="#388E3C" />
+        android:progressTint="@color/colorAccent"
+        android:thumbTint="@color/colorAccentDark" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -55,8 +65,9 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:text="@string/em_quantas_parcelas"
-        android:textColor="#212121"
-        android:textSize="14sp" />
+        android:textColor="@color/primary_text"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewParcelas"
@@ -64,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
-        android:textColor="#003069"
+        android:textColor="@color/colorPrimary"
         android:textSize="20sp" />
 
     <SeekBar
@@ -74,8 +85,8 @@
         android:layout_margin="5dp"
         android:max="36"
         android:progress="2"
-        android:progressTint="#388E3C"
-        android:thumbTint="#388E3C" />
+        android:progressTint="@color/colorAccent"
+        android:thumbTint="@color/colorAccentDark" />
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -40,7 +40,7 @@
                 android:layout_marginTop="15dp"
                 android:gravity="center"
                 android:text="Pronto, você está preparado para simular e investir."
-                android:textColor="#007216"
+                android:textColor="@color/colorAccentDark"
                 android:textSize="22dp"
                 android:textStyle="bold" />
 
@@ -49,6 +49,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="15dp"
                 android:text="Suas escolhas foram: médio prazo > pós-fixado:\nO título mais indicado para você é:"
+                android:textColor="@color/primary_text"
                 android:textSize="18dp" />
 
             <android.support.v7.widget.CardView
@@ -69,7 +70,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:text="Tesouro IPCA+ 2024 (NTN-B Principal)"
-                        android:textColor="#003069"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -77,13 +78,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="Vencimento: 15/08/2024" />
+                        android:text="Vencimento: 15/08/2024"
+                        android:textColor="@color/secondary_text" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="Indicado para aqueles que querem investir por médio ou longo prazo. São títulos pós-fixados, uma vez que parte de seus rendimentos acompanha a variação da taxa de inflação (IPCA). Eles aumentam o poder de compra do seu dinheiro, pois seus retornos são compostos por uma taxa de juros predefinida + variação da inflação (IPCA). São mais interessantes para quem pode deixar o dinheiro render até o vencimento do investimento, pois não pagam juros semestrais." />
+                        android:text="Indicado para aqueles que querem investir por médio ou longo prazo. São títulos pós-fixados, uma vez que parte de seus rendimentos acompanha a variação da taxa de inflação (IPCA). Eles aumentam o poder de compra do seu dinheiro, pois seus retornos são compostos por uma taxa de juros predefinida + variação da inflação (IPCA). São mais interessantes para quem pode deixar o dinheiro render até o vencimento do investimento, pois não pagam juros semestrais."
+                        android:textColor="@color/secondary_text" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -105,7 +108,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:text="Tesouro Selic 2023 (LFT)"
-                        android:textColor="#003069"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -113,13 +116,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="Vencimento: 07/03/2023" />
+                        android:text="Vencimento: 07/03/2023"
+                        android:textColor="@color/secondary_text" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="Indicado para aqueles que querem investir por curto ou médio prazo. É um título pós-fixado, uma vez que seu rendimento acompanha as variações da taxa de juros da economia (SELIC). Esse investimento garante que, mesmo em caso de resgate antecipado, o montante do dinheiro resgatado será superior ao inicialmente investido.  Como não paga juros semestrais, é mais interessante para quem pode deixar o dinheiro render até o vencimento do investimento." />
+                        android:text="Indicado para aqueles que querem investir por curto ou médio prazo. É um título pós-fixado, uma vez que seu rendimento acompanha as variações da taxa de juros da economia (SELIC). Esse investimento garante que, mesmo em caso de resgate antecipado, o montante do dinheiro resgatado será superior ao inicialmente investido.  Como não paga juros semestrais, é mais interessante para quem pode deixar o dinheiro render até o vencimento do investimento."
+                        android:textColor="@color/secondary_text" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
