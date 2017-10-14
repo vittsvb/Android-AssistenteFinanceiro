@@ -30,9 +30,9 @@ public class QuizActivity extends FragmentActivity {
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withSelectionListEnabledForSingleProfile(false)
-                .withHeaderBackground(R.color.md_orange_A200)
+                .withHeaderBackground(R.color.colorAccent)
                 .addProfiles(
-                        new ProfileDrawerItem().withName("Usuario").withEmail("user@user.com").withIcon(getResources().getDrawable(R.drawable.bg_bubble_self))
+                        new ProfileDrawerItem().withName("Vitor Vilas Boas").withEmail("vvilas@gmail.com").withIcon(getResources().getDrawable(R.drawable.user))
                 )
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
@@ -42,9 +42,10 @@ public class QuizActivity extends FragmentActivity {
                 })
                 .build();
 
+        SectionDrawerItem titulo1 = new SectionDrawerItem().withName("Assistentes");
         final PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_comment).withIdentifier(1).withName("Assitente Virtual");
-        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_comment).withIdentifier(1).withName("Quiz");
-        SectionDrawerItem titulo1 = new SectionDrawerItem().withName("Calculadoras");
+        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_comment).withIdentifier(1).withName("Análise Perfil do Investidor");
+        SectionDrawerItem titulo2 = new SectionDrawerItem().withName("Simuladores");
         final PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_calculator).withIdentifier(2).withName("Tesouro Direto");
         final PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_calculator).withIdentifier(3).withName("Empréstimo Pessoal");
 
@@ -57,9 +58,10 @@ public class QuizActivity extends FragmentActivity {
                 .withActionBarDrawerToggleAnimated(true)
                 .withToolbar(toolbar)
                 .addDrawerItems(
+                        titulo1,
                         item1,
                         item2,
-                        titulo1,
+                        titulo2,
                         item3,
                         item4
 

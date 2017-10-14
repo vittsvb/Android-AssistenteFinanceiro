@@ -54,9 +54,9 @@ public class EmprestimoActivity extends Activity {
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withSelectionListEnabledForSingleProfile(false)
-                .withHeaderBackground(R.color.md_orange_A200)
+                .withHeaderBackground(R.color.colorAccent)
                 .addProfiles(
-                        new ProfileDrawerItem().withName("Usuario").withEmail("user@user.com").withIcon(getResources().getDrawable(R.drawable.bg_bubble_self))
+                        new ProfileDrawerItem().withName("Vitor Vilas Boas").withEmail("vvilas@gmail.com").withIcon(getResources().getDrawable(R.drawable.user))
                 )
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
@@ -66,9 +66,10 @@ public class EmprestimoActivity extends Activity {
                 })
                 .build();
 
+        SectionDrawerItem titulo1 = new SectionDrawerItem().withName("Assistentes");
         final PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_comment).withIdentifier(1).withName("Assitente Virtual");
-        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_comment).withIdentifier(1).withName("Quiz");
-        SectionDrawerItem titulo1 = new SectionDrawerItem().withName("Calculadoras");
+        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_comment).withIdentifier(1).withName("Análise Perfil do Investidor");
+        SectionDrawerItem titulo2 = new SectionDrawerItem().withName("Simuladores");
         final PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_calculator).withIdentifier(2).withName("Tesouro Direto");
         final PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_calculator).withIdentifier(3).withName("Empréstimo Pessoal");
 
@@ -81,9 +82,10 @@ public class EmprestimoActivity extends Activity {
                 .withActionBarDrawerToggleAnimated(true)
                 .withToolbar(toolbar)
                 .addDrawerItems(
+                        titulo1,
                         item1,
                         item2,
-                        titulo1,
+                        titulo2,
                         item3,
                         item4
 
@@ -240,14 +242,27 @@ public class EmprestimoActivity extends Activity {
             emprestimos.add(emprestimo);
         }
 
-        if (valor >= 2500 && valor <= 50000 && parcelas <= 36) {
+        if (valor >= 2500 && valor <= 50000 && parcelas >= 12 && parcelas <= 36) {
             emprestimo = new Emprestimo();
-            juros = 0.024;
+            juros = 0.0297;
             valorMes = valor / ((1 - Math.pow((1 + juros), -parcelas)) / juros);
             valorTotal = valorMes * parcelas;
 
             emprestimo.setNome("lendico");
-            emprestimo.setJuros("Juros: 2.4% mês");
+            emprestimo.setJuros("Juros: 2.97% mês");
+            emprestimo.setValorMes("R$ " + String.format("%.2f", valorMes) + "/mês");
+            emprestimo.setTotal("Total a pagar: R$ " + String.format("%.2f", valorTotal));
+            emprestimos.add(emprestimo);
+        }
+
+        if (valor >= 1000 && valor <= 4000 && parcelas >= 6 && parcelas <= 12) {
+            emprestimo = new Emprestimo();
+            juros = 0.0446;
+            valorMes = valor / ((1 - Math.pow((1 + juros), -parcelas)) / juros);
+            valorTotal = valorMes * parcelas;
+
+            emprestimo.setNome("noverde");
+            emprestimo.setJuros("Juros: 4.46% mês");
             emprestimo.setValorMes("R$ " + String.format("%.2f", valorMes) + "/mês");
             emprestimo.setTotal("Total a pagar: R$ " + String.format("%.2f", valorTotal));
             emprestimos.add(emprestimo);
@@ -266,7 +281,7 @@ public class EmprestimoActivity extends Activity {
             emprestimos.add(emprestimo);
         }
 
-        if (valor <= 3500 && parcelas <= 12) {
+        if (valor <= 3500 && parcelas >= 3 && parcelas <= 12) {
             emprestimo = new Emprestimo();
             juros = 0.158;
             valorMes = valor / ((1 - Math.pow((1 + juros), -parcelas)) / juros);
@@ -279,14 +294,14 @@ public class EmprestimoActivity extends Activity {
             emprestimos.add(emprestimo);
         }
 
-        if (valor >= 2000 && valor <= 50000 && parcelas <= 36) {
+        if (valor >= 2000 && valor <= 50000 && parcelas >= 12 && parcelas <= 36) {
             emprestimo = new Emprestimo();
-            juros = 0.023;
+            juros = 0.024;
             valorMes = valor / ((1 - Math.pow((1 + juros), -parcelas)) / juros);
             valorTotal = valorMes * parcelas;
 
             emprestimo.setNome("Geru");
-            emprestimo.setJuros("Juros: 2.3% mês");
+            emprestimo.setJuros("Juros: 2.4% mês");
             emprestimo.setValorMes("R$ " + String.format("%.2f", valorMes) + "/mês");
             emprestimo.setTotal("Total a pagar: R$ " + String.format("%.2f", valorTotal));
             emprestimos.add(emprestimo);

@@ -105,18 +105,22 @@ public class MainActivity extends Activity {
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         if (drawerItem == item1) {
                             Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                            finish();
                             startActivity(intent);
                         }
                         if (drawerItem == item2) {
                             Intent intent = new Intent(MainActivity.this, QuizActivity.class);
+                            finish();
                             startActivity(intent);
                         }
                         if (drawerItem == item3) {
                             Intent intent = new Intent(MainActivity.this, InvestimentoActivity.class);
+                            finish();
                             startActivity(intent);
                         }
                         if (drawerItem == item4) {
                             Intent intent = new Intent(MainActivity.this, EmprestimoActivity.class);
+                            finish();
                             startActivity(intent);
                         }
                         return true;
