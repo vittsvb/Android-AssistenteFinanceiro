@@ -41,9 +41,6 @@ public class EmprestimoActivity extends Activity {
     private RecyclerView.Adapter adapter;
     private LinearLayoutManager linearLayoutManager;
 
-    private Dialog dialog;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -309,108 +306,4 @@ public class EmprestimoActivity extends Activity {
 
 
     }
-
-//    public void infoJust(View view) {
-//        dialog = new Dialog(this);
-//        dialog.setContentView(R.layout.info_dialog);
-//        TextView textPros = (TextView) dialog.findViewById(R.id.textPros);
-//
-//        textPros.setText("– Todo o processo de pedido e contratação de empréstimo é online;\n" +
-//                "\n" +
-//                "– A liberação do dinheiro para a conta do cliente é feita em até um dia útil;\n" +
-//                "\n" +
-//                "– É solicitado apenas documento de identidade e a digitalização é feita pela internet;\n" +
-//                "\n" +
-//                "– Empréstimos de até R$ 35 mil e pagamento em até 24 meses.");
-//
-//        TextView textContra = (TextView) dialog.findViewById(R.id.textContra);
-//
-//        textContra.setText("– Pode pedir outros documentos no processo de aprovação, como comprovante de residência.");
-//
-//
-//        dialog.show();
-//    }
-//
-
-//
-//    public void infoLendico(View view) {
-//        dialog = new Dialog(this);
-//        dialog.setContentView(R.layout.info_dialog);
-//        TextView textPros = (TextView) dialog.findViewById(R.id.textPros);
-//
-//        textPros.setText("– Simulador mostra detalhes sobre parcelas e juros cobrados pela instituição;");
-//
-//        TextView textContra = (TextView) dialog.findViewById(R.id.textContra);
-//
-//        textContra.setText("– Não deixa claro se é vinculada a alguma instituição financeira;\n" +
-//                "\n" +
-//                "– É preciso imprimir formulários e digitaliza-los posteriormente para enviar.");
-//
-//
-//        dialog.show();
-//    }
-//
-
-//
-//    public void infoBC(View view) {
-//        dialog = new Dialog(this);
-//        dialog.setContentView(R.layout.info_dialog);
-//        TextView textPros = (TextView) dialog.findViewById(R.id.textPros);
-//
-//        textPros.setText("– Sugere opções de empréstimos de diversas instituições.");
-//
-//        TextView textContra = (TextView) dialog.findViewById(R.id.textContra);
-//
-//        textContra.setText("– Para fazer a busca pelas opções de empréstimo é preciso preencher vários dados pessoais;\n" +
-//                "\n" +
-//                "– A finalização do empréstimo precisa ser feita pessoalmente na instituição escolhida.");
-//
-//
-//        dialog.show();
-//    }
-//
-
-//
-//    public void infoSimplic(View view) {
-//        dialog = new Dialog(this);
-//        dialog.setContentView(R.layout.info_dialog);
-//        TextView textPros = (TextView) dialog.findViewById(R.id.textPros);
-//
-//        textPros.setText("– Se o contrato for fechado até 16h, o dinheiro é liberado no mesmo dia;\n" +
-//                "\n" +
-//                "– Todo o processo é feito online.");
-//
-//        TextView textContra = (TextView) dialog.findViewById(R.id.textContra);
-//
-//        textContra.setText("– Site com poucas informações e que não permite fazer simulações;\n" +
-//                "\n" +
-//                "– Cobra a maior taxa de juros entre as quatro empresas;\n" +
-//                "\n" +
-//                "– Limite de crédito de até R$ 3,5 mil;\n" +
-//                "\n" +
-//                "– Só aceita clientes dos bancos Bradesco, Caixa Econômica Federal, Itaú, Santander.");
-//
-//
-//        dialog.show();
-//    }
-//
-//
-//    public void infoGeru(View view) {
-//        dialog = new Dialog(this);
-//        dialog.setContentView(R.layout.info_dialog);
-//        TextView textPros = (TextView) dialog.findViewById(R.id.textPros);
-//
-//        textPros.setText("– Site útil, com simulador de juros;\n" +
-//                "\n" +
-//                "– Deixa explícito que a taxa de juros efetiva é maior, pois incorpora outros encargos;\n" +
-//                "\n" +
-//                "– Todo o processo é online.");
-//
-//        TextView textContra = (TextView) dialog.findViewById(R.id.textContra);
-//
-//        textContra.setText("– Só oferece empréstimo de uma instituição financeira. É vinculada ao Banco AndBank (Brasil) S.A.");
-//
-//
-//        dialog.show();
-//    }
 }
