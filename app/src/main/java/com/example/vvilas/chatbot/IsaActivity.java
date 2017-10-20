@@ -1,20 +1,20 @@
 package com.example.vvilas.chatbot;
 
 import android.app.Activity;
-import android.content.Context;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.CountDownTimer;
+import android.speech.RecognizerIntent;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.ibm.watson.developer_cloud.android.library.audio.StreamPlayer;
+import com.ibm.watson.developer_cloud.text_to_speech.v1.model.Voice;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,138 +24,83 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Locale;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import com.ibm.watson.developer_cloud.text_to_speech.v1.model.Voice;
-import com.mikepenz.fontawesome_typeface_library.FontAwesome;
-import com.mikepenz.materialdrawer.AccountHeader;
-import com.mikepenz.materialdrawer.AccountHeaderBuilder;
-import com.mikepenz.materialdrawer.Drawer;
-import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
-import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
-import com.mikepenz.materialdrawer.model.SectionDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IProfile;
+public class IsaActivity extends Activity {
 
-
-public class MainActivity extends Activity {
-
+    private ImageButton btnSpeak;
+    private final int REQ_CODE_SPEECH_INPUT = 100;
     public ImageView gif;
-    public EditText message;
-
-    //public TextView watsonRes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_isa);
 
         gif = (ImageView) findViewById(R.id.gif);
-        message = (EditText) findViewById(R.id.message);
+        btnSpeak = (ImageButton) findViewById(R.id.btnSpeak);
+
 
         Glide.with(this)
                 .load(R.mipmap.dots_idle)
                 .asGif()
                 .into(gif);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        btnSpeak.setOnClickListener(new View.OnClickListener() {
 
-        AccountHeader headerResult = new AccountHeaderBuilder()
-                .withActivity(this)
-                .withSelectionListEnabledForSingleProfile(false)
-                .withHeaderBackground(R.color.colorAccent)
-                .addProfiles(
-                        new ProfileDrawerItem().withName("Vitor Vilas Boas").withEmail("vvilas@gmail.com").withIcon(getResources().getDrawable(R.drawable.user))
-                )
-                .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
-                    @Override
-                    public boolean onProfileChanged(View view, IProfile profile, boolean currentProfile) {
-                        return false;
-                    }
-                })
-                .build();
+            @Override
+            public void onClick(View v) {
+                promptSpeechInput();
+            }
+        });
 
-        SectionDrawerItem titulo1 = new SectionDrawerItem().withName("Assistentes");
-        final PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_comment).withIdentifier(1).withName("Assitente Virtual");
-        final PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_comment).withIdentifier(1).withName("Assitente Virtual 2.0");
-        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_comment).withIdentifier(1).withName("Análise Perfil do Investidor");
-        SectionDrawerItem titulo2 = new SectionDrawerItem().withName("Simuladores");
-        final PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_calculator).withIdentifier(2).withName("Tesouro Direto");
-        final PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIcon(FontAwesome.Icon.faw_calculator).withIdentifier(3).withName("Empréstimo Pessoal");
-
-        Drawer result = new DrawerBuilder()
-                .withAccountHeader(headerResult)
-                .withActivity(this)
-                .withSelectedItem(-1)
-                .withTranslucentStatusBar(false)
-                .withActionBarDrawerToggle(true)
-                .withActionBarDrawerToggleAnimated(true)
-                .withToolbar(toolbar)
-                .addDrawerItems(
-                        titulo1,
-                        item1,
-                        item5,
-                        item2,
-                        titulo2,
-                        item3,
-                        item4
-
-
-                ).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                    @Override
-                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        if (drawerItem == item1) {
-                            Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                            finish();
-                            startActivity(intent);
-                        }
-                        if (drawerItem == item2) {
-                            Intent intent = new Intent(MainActivity.this, QuizActivity.class);
-                            finish();
-                            startActivity(intent);
-                        }
-                        if (drawerItem == item3) {
-                            Intent intent = new Intent(MainActivity.this, InvestimentoActivity.class);
-                            finish();
-                            startActivity(intent);
-                        }
-                        if (drawerItem == item4) {
-                            Intent intent = new Intent(MainActivity.this, EmprestimoActivity.class);
-                            finish();
-                            startActivity(intent);
-                        }
-
-                        if (drawerItem == item5) {
-                            Intent intent = new Intent(MainActivity.this, IsaActivity.class);
-                            finish();
-                            startActivity(intent);
-                        }
-                        return true;
-                    }
-                })
-                .build();
     }
 
+    /**
+     * Showing google speech input dialog
+     */
+    private void promptSpeechInput() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+                getString(R.string.speech_prompt));
+        try {
+            startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+        } catch (ActivityNotFoundException a) {
+            Toast.makeText(getApplicationContext(),
+                    getString(R.string.speech_not_supported),
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
 
-    public void enviarMsg(View view) {
+    /**
+     * Receiving speech input
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        switch (requestCode) {
+            case REQ_CODE_SPEECH_INPUT: {
+                if (resultCode == RESULT_OK && null != data) {
 
-        String messageTrim = message.getText().toString().trim();
+                    ArrayList<String> result = data
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    conversaWatson task = new conversaWatson();
+                    task.execute(result.get(0));
+                }
+                break;
+            }
 
-        if (!messageTrim.equals("")) {
-            conversaWatson task = new conversaWatson();
-
-            task.execute(message.getText().toString());
         }
     }
 
     private class SynthesisTask extends AsyncTask<String, Void, String> {
-
 
         @Override
         protected String doInBackground(String... params) {
@@ -170,17 +115,15 @@ public class MainActivity extends Activity {
         }
     }
 
-
     private class conversaWatson extends AsyncTask<String, Object, String> {
 
         @Override
         protected void onPreExecute() {
-            Glide.with(MainActivity.this)
+            Glide.with(IsaActivity.this)
                     .load(R.mipmap.dots_think)
                     .asGif()
                     .into(gif);
 
-            message.setText("");
         }
 
         @Override
@@ -243,8 +186,6 @@ public class MainActivity extends Activity {
                     SynthesisTask synthesisTask = new SynthesisTask();
                     synthesisTask.execute(text);
 
-//                    watsonRes.setText(text);
-
                     new android.os.Handler().postDelayed(
                             new Runnable() {
                                 public void run() {
@@ -260,7 +201,7 @@ public class MainActivity extends Activity {
                                     writer.animateText(text);
 
 
-                                    Glide.with(MainActivity.this)
+                                    Glide.with(IsaActivity.this)
                                             .load(R.mipmap.dots_speak)
                                             .asGif()
                                             .into(gif);
@@ -271,7 +212,7 @@ public class MainActivity extends Activity {
                                         }
 
                                         public void onFinish() {
-                                            Glide.with(MainActivity.this)
+                                            Glide.with(IsaActivity.this)
                                                     .load(R.mipmap.dots_idle)
                                                     .asGif()
                                                     .into(gif);
@@ -287,9 +228,13 @@ public class MainActivity extends Activity {
                 }
 
             } else {
-                Toast.makeText(MainActivity.this, "Erro ao realizar consulta", Toast.LENGTH_LONG).show();
+                Toast.makeText(IsaActivity.this, "Erro ao realizar consulta", Toast.LENGTH_LONG).show();
 
             }
         }
     }
+
+
 }
+
+
