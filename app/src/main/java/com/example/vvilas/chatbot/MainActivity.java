@@ -130,7 +130,6 @@ public class MainActivity extends Activity {
 
                         if (drawerItem == item5) {
                             Intent intent = new Intent(MainActivity.this, IsaActivity.class);
-                            finish();
                             startActivity(intent);
                         }
                         return true;
