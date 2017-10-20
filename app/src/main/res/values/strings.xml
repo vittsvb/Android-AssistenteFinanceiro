@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">Assistente Financeiro</string>
     <string name="digite_a_sua_pergunta">Digite a sua pergunta</string>
-    <string name="text_speech_username">06fbf6c3-4c5b-4816-aa9a-15cbd8e92ea5</string>
-    <string name="text_speech_password">n3jOVARn4BVa</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="info">+ Info</string>
     <string name="em_quantas_parcelas">Em quantas parcelas?</string>
+    <string name="speech_prompt">Faça um pergunta...</string>
+    <string name="speech_not_supported">Desculpe! Seu dispositivo não suporta essa funcionalidade</string>
+    <string name="tap_on_mic">Toque no microfone e fale...</string>
+    <string name="text_speech_username">06fbf6c3-4c5b-4816-aa9a-15cbd8e92ea5</string>
+    <string name="text_speech_password">n3jOVARn4BVa</string>
 </resources>
